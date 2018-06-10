@@ -19,10 +19,14 @@ public class MessageSourceApplicationTests {
     private ResourceBundleMessageSource resourceBundleMessageSource;
 
     @Test
-    public void test() {
-        String reversed = resourceBundleMessageSource.getMessage("hallo", null, Locale.getDefault());
+    public void working() {
+        String reversed = resourceBundleMessageSource.getMessage("hallo", null, Locale.GERMAN);
         assertThat(reversed).isEqualToIgnoringCase("ollah");
     }
 
-
+    @Test
+    public void notWorking() {
+        String reversed = resourceBundleMessageSource.getMessage("invalidAdminPassword", null, Locale.US);
+        assertThat(reversed).isEqualToIgnoringCase("Invalid password.");
+    }
 }

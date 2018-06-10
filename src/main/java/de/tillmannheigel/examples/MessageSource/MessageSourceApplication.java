@@ -15,9 +15,9 @@ public class MessageSourceApplication {
     @Bean
     public ResourceBundleMessageSource messageSource() {
         ResourceBundleMessageSource source = new ResourceBundleMessageSource();
-        source.setBasename("" +
-                "messages");
-        source.setUseCodeAsDefaultMessage(true);
+        source.setBasename("messages");
+        source.setCacheSeconds(3600); // Refresh cache once per hour.
         return source;
     }
 }
+
